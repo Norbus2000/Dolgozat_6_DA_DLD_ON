@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Participates;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -19,6 +20,11 @@ return new class extends Migration
             $table->boolean('present');
             $table->timestamps();
         });
+
+        Participates::create([ 'user_id' => 1, 'event_id' => 1, 'present'=> false]);
+        Participates::create([ 'user_id' => 2, 'event_id' => 2, 'present'=> true]);
+        Participates::create([ 'user_id' => 3, 'event_id' => 3, 'present'=> false]);
+
     }
 
     /**
