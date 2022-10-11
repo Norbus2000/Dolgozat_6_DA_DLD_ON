@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id('user_id');
+        Schema::create('agencies', function (Blueprint $table) {
+            $table->id('agency_id');
             $table->string('name',32);
-            $table->string('email')->unique();
-            $table->boolean('vip');
-            $table->rememberToken();
+            $table->string('country',50);
+            $table->string('type',20);
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('agencies');
     }
 };

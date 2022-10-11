@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id('user_id');
-            $table->string('name',32);
-            $table->string('email')->unique();
-            $table->boolean('vip');
-            $table->rememberToken();
+        Schema::create('participates', function (Blueprint $table) {
+            $table->foreignId('user_id')->references('user_id')->on('users');
+            $table->foreignId('event_id')->references('event_id')->on('events');
+            $table->boolean('present');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('participates');
     }
 };
