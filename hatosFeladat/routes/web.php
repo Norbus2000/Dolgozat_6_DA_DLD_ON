@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AgencyController;
+use App\Http\Controllers\EventsController;
+use App\Http\Controllers\ParticipatesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +19,31 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/api/agencies', [AgencyController::class, 'index']);
+Route::get('/api/agencies/{id}', [AgencyController::class, 'show']);
+Route::post('/api/agencies/', [AgencyController::class, 'store']);
+Route::put('/api/agencies/{id}', [AgencyController::class, 'update']);
+Route::delete('/api/agencies/{id}', [AgencyController::class, 'destroy']);
+Route::get('/agency/new', [AgencyController::class, 'newView']);
+Route::get('/agency/edit/{id}', [AgencyController::class, 'editView']);
+Route::get('/agency/list', [AgencyController::class, 'listView']);
+
+Route::get('/api/events', [EventsController::class, 'index']);
+Route::get('/api/events/{id}', [EventsController::class, 'show']);
+Route::post('/api/events/', [EventsController::class, 'store']);
+Route::put('/api/events/{id}', [EventsController::class, 'update']);
+Route::delete('/api/events/{id}', [EventsController::class, 'destroy']);
+Route::get('/event/new', [EventsController::class, 'newView']);
+Route::get('/event/edit/{id}', [EventsController::class, 'editView']);
+Route::get('/event/list', [EventsController::class, 'listView']);
+
+Route::get('/api/participates', [ParticipatesController::class, 'index']);
+Route::get('/api/participates/{id}', [ParticipatesController::class, 'show']);
+Route::post('/api/participates/', [ParticipatesController::class, 'store']);
+Route::put('/api/participates/{id}', [ParticipatesController::class, 'update']);
+Route::delete('/api/participates/{id}', [ParticipatesController::class, 'destroy']);
+Route::get('/participate/new', [ParticipatesController::class, 'newView']);
+Route::get('/participate/edit/{id}', [ParticipatesController::class, 'editView']);
+Route::get('/participate/list', [ParticipatesController::class, 'listView']);
+
