@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Events;
 use App\Models\Participates;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ParticipatesController extends Controller
@@ -41,5 +43,25 @@ class ParticipatesController extends Controller
         $participate->present=$request->present;
         $participate->save();
         return redirect('/participate/list');
+    }
+
+    public function newView()
+    {
+        $participates=Participates::all();
+        $events=Events::all();
+        $users=User::all();
+        return view('participate.new', ['participates'=>$participates, 'events' =>$events,'users' =>$users]);
+    }
+
+    public function editView($id)
+    {
+        $participate=Participates::find($id);
+        return view('participate.edit', ['participate'=>$participate]);
+    }
+
+    public function listView()
+    {
+        $participates = Participates::all();
+        return view('participate.list', ['participates' => $participates]);
     }
 }

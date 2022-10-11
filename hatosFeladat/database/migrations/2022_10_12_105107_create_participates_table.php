@@ -15,6 +15,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('participates', function (Blueprint $table) {
+            $table->id('participate_id');
             $table->foreignId('user_id')->references('user_id')->on('users');
             $table->foreignId('event_id')->references('event_id')->on('events');
             $table->boolean('present');

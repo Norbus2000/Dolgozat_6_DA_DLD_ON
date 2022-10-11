@@ -44,4 +44,24 @@ class EventsController extends Controller
         $event->save();
         return redirect('/event/list');
     }
+
+    public function newView()
+    {
+        $events=Events::all();
+        return view('event.new', ['events'=>$events]);
+    }
+
+    public function editView($id)
+    {
+        $event=Events::find($id);
+        return view('event.edit', ['event'=>$event]);
+    }
+
+    public function listView()
+    {
+        $events = Events::all();
+        return view('event.list', ['events' => $events]);
+    }
+  
+
 }

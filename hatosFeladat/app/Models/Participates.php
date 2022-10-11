@@ -9,6 +9,8 @@ class Participates extends Model
 {
     use HasFactory;
 
+    protected $primaryKey='participate_id';
+
     protected $fillable = [
         'user_id',
         'event_id',
